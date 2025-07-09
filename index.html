@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Maut Store - Premium APKs, Tools, Scripts and Videos for educational purposes">
+    <title>Maut Store | Premium Digital Resources</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --primary-dark: #5f00a8;
+            --secondary: #00ffff;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f5f5f5;
+            --danger: #ff3860;
+            --success: #00d1b2;
+            --warning: #ffdd57;
+            --glow: 0 0 15px rgba(138, 43, 226, 0.6);
+            --glow-secondary: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Header */
+        header {
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: var(--glow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+            color: var(--primary);
+            text-shadow: var(--glow);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .search-container {
+            position: relative;
+            width: 40%;
+            min-width: 300px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            padding-right: 3rem;
+            border-radius: 30px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.08);
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .search-bar:focus {
+            outline: none;
+            box-shadow: var(--glow);
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-icon:hover {
+            color: var(--secondary);
+            text-shadow: var(--glow-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            margin-top: 90px;
+            padding: 2.5rem;
+            max-width: 1400px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.15) 0%, rgba(0, 255, 255, 0.15) 100%);
+            box-shadow: var(--glow);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--light);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .category-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--glow);
+            background: rgba(40, 40, 40, 0.7);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% 200%;
+            border-radius: 15px;
+            opacity: 0;
+            transition: 0.5s;
+            animation: animate 4s linear infinite;
+        }
+
+        .category-card:hover::before {
+            opacity: 0.7;
+        }
+
+        @keyframes animate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .category-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            text-shadow: var(--glow);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-icon {
+            color: var(--secondary);
+            text-shadow: var(--glow-secondary);
+            transform: scale(1.1);
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-title {
+            color: var(--secondary);
+        }
+
+        .category-desc {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-desc {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Items Grid */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .item-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--glow);
+            background: rgba(40, 40, 40, 0.7);
+        }
+
+        .item-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .item-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .item-badge {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: var(--light);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .item-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .item-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        .item-card:hover .item-title {
+            color: var(--secondary);
+        }
+
+        .item-desc {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            transition: all 0.3s ease;
+        }
+
+        .item-card:hover .item-desc {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .item-link {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .item-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-dark), var(--secondary));
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .item-link:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow);
+        }
+
+        .item-link:hover::before {
+            width: 100%;
+        }
+
+        .item-link i {
+            margin-left: 0.7rem;
+            transition: all 0.3s ease;
+        }
+
+        .item-link:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.95) 0%, rgba(10, 10, 10, 0.9) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 -5px 30px rgba(138, 43, 226, 0.1);
+            margin-top: 4rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            text-shadow: var(--glow);
+        }
+
+        .footer-logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary);
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-disclaimer {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.75);
+            margin-top: 1.5rem;
+            font-size: 1rem;
+        }
+
+        /* Page Transitions */
+        .page {
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--darker);
+            z-index: 9999;
+            flex-direction: column;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid rgba(138, 43, 226, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1.2s ease-in-out infinite;
+            margin-bottom: 2rem;
+        }
+
+        .loading-text {
+            color: var(--light);
+            font-size: 1.5rem;
+            text-align: center;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 100%;
+            background: rgba(30, 30, 30, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            display: none;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 999;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-menu-link {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.3rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mobile-menu-link i {
+            width: 25px;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .mobile-menu-link:hover {
+            background: rgba(138, 43, 226, 0.2);
+            color: var(--secondary);
+            transform: translateX(10px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+
+            .search-container {
+                width: 100%;
+                max-width: 500px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 1.5rem;
+                top: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            main {
+                padding: 1.5rem;
+                margin-top: 130px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .categories {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .items-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .footer-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .logo-icon {
+                font-size: 1.8rem;
+            }
+
+            .hero {
+                padding: 2.5rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-logo-text {
+                font-size: 1.5rem;
+            }
+
+            .footer-logo-icon {
+                font-size: 1.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-link {
+                font-size: 1rem;
+            }
+
+            main {
+                padding: 1rem;
+                margin-top: 120px;
+            }
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+        .mt-5 { margin-top: 3rem; }
+
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 2rem; }
+        .mb-5 { margin-bottom: 3rem; }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Maut Store Loading...</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div class="logo-icon"><i class="fas fa-skull"></i></div>
+                <div class="logo-text">Maut Store</div>
+            </a>
+
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Search APKs, Tools, Videos...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+            <nav class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/mods" class="nav-link">Mod APKs</a>
+                <a href="/tools" class="nav-link">Tools</a>
+                <a href="/videos" class="nav-link">Videos</a>
+                <a href="/scripts" class="nav-link">Scripts</a>
+            </nav>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu hidden" id="mobileMenu">
+        <a href="/" class="mobile-menu-link"><i class="fas fa-home"></i> Home</a>
+        <a href="/mods" class="mobile-menu-link"><i class="fas fa-android"></i> Mod APKs</a>
+        <a href="/tools" class="mobile-menu-link"><i class="fas fa-tools"></i> Tools</a>
+        <a href="/videos" class="mobile-menu-link"><i class="fas fa-video"></i> Videos</a>
+        <a href="/scripts" class="mobile-menu-link"><i class="fas fa-code"></i> Scripts</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="page" id="mainContent">
+        <!-- Home Page -->
+        <div id="homePage">
+            <section class="hero">
+                <h1 class="hero-title">Maut Store</h1>
+                <p class="hero-subtitle">Premium digital resources for educational purposes. Download high-quality Mod APKs, Telegram tools, scripts, and watch exclusive tutorial videos.</p>
+            </section>
+
+            <h2 class="section-title">Browse Categories</h2>
+            <div class="categories">
+                <div class="category-card" onclick="navigateTo('/mods')">
+                    <div class="category-icon"><i class="fas fa-android"></i></div>
+                    <h3 class="category-title">Mod APKs</h3>
+                    <p class="category-desc">Premium unlocked apps with enhanced features for educational testing</p>
+                </div>
+
+                <div class="category-card" onclick="navigateTo('/tools')">
+                    <div class="category-icon"><i class="fas fa-tools"></i></div>
+                    <h3 class="category-title">Telegram Tools</h3>
+                    <p class="category-desc">Powerful tools for Telegram automation and management</p>
+                </div>
+
+                <div class="category-card" onclick="navigateTo('/videos')">
+                    <div class="category-icon"><i class="fas fa-video"></i></div>
+                    <h3 class="category-title">Tutorial Videos</h3>
+                    <p class="category-desc">Step-by-step guides and educational tutorials</p>
+                </div>
+
+                <div class="category-card" onclick="navigateTo('/scripts')">
+                    <div class="category-icon"><i class="fas fa-code"></i></div>
+                    <h3 class="category-title">Scripts</h3>
+                    <p class="category-desc">Automation scripts for various platforms and purposes</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Recently Added</h2>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Mod APK</span>
+                        <span class="item-date">2 days ago</span>
+                    </div>
+                    <h3 class="item-title">YouTube Premium v18.45.43</h3>
+                    <p class="item-desc">Ad-free YouTube experience with background play and downloads enabled. No root required for educational testing.</p>
+                    <a href="/mods/youtube-premium" class="item-link">Download <i class="fas fa-download"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Tool</span>
+                        <span class="item-date">1 week ago</span>
+                    </div>
+                    <h3 class="item-title">Telegram Member Adder</h3>
+                    <p class="item-desc">Educational tool for adding members to Telegram groups automatically with advanced filters.</p>
+                    <a href="/tools/telegram-member-adder" class="item-link">Get Tool <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Video</span>
+                        <span class="item-date">3 days ago</span>
+                    </div>
+                    <h3 class="item-title">Android Reverse Engineering</h3>
+                    <p class="item-desc">Educational video on reverse engineering Android apps and modifying their behavior.</p>
+                    <a href="/videos/android-reverse-engineering" class="item-link">Watch Now <i class="fas fa-play"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mods Page -->
+        <div id="modsPage" class="hidden">
+            <h1 class="hero-title mb-4">Mod APKs</h1>
+            <p class="hero-subtitle mb-5">Premium unlocked apps with enhanced features for educational purposes only.</p>
+
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Mod APK</span>
+                        <span class="item-date">2 days ago</span>
+                    </div>
+                    <h3 class="item-title">YouTube Premium v18.45.43</h3>
+                    <p class="item-desc">Ad-free YouTube experience with background play and downloads enabled. No root required for educational testing.</p>
+                    <a href="/mods/youtube-premium" class="item-link">Download <i class="fas fa-download"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Mod APK</span>
+                        <span class="item-date">1 week ago</span>
+                    </div>
+                    <h3 class="item-title">Spotify Premium v8.8.52.612</h3>
+                    <p class="item-desc">Educational version with unlocked premium features including unlimited skips, no ads, and extreme quality streaming.</p>
+                    <a href="/mods/spotify-premium" class="item-link">Download <i class="fas fa-download"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Mod APK</span>
+                        <span class="item-date">5 days ago</span>
+                    </div>
+                    <h3 class="item-title">TikTok Pro v28.1.3</h3>
+                    <p class="item-desc">Educational version with unlocked effects, no watermark, and region restriction bypass for testing purposes.</p>
+                    <a href="/mods/tiktok-pro" class="item-link">Download <i class="fas fa-download"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Mod APK</span>
+                        <span class="item-date">3 weeks ago</span>
+                    </div>
+                    <h3 class="item-title">Netflix Premium v8.2.1</h3>
+                    <p class="item-desc">Educational testing version with access to all Netflix content. 4K quality enabled for research purposes.</p>
+                    <a href="/mods/netflix-premium" class="item-link">Download <i class="fas fa-download"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools Page -->
+        <div id="toolsPage" class="hidden">
+            <h1 class="hero-title mb-4">Telegram Tools</h1>
+            <p class="hero-subtitle mb-5">Powerful tools for Telegram automation and management for educational purposes.</p>
+
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Tool</span>
+                        <span class="item-date">1 week ago</span>
+                    </div>
+                    <h3 class="item-title">Telegram Member Adder</h3>
+                    <p class="item-desc">Educational tool for adding members to Telegram groups automatically with advanced filters.</p>
+                    <a href="/tools/telegram-member-adder" class="item-link">Get Tool <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Tool</span>
+                        <span class="item-date">2 weeks ago</span>
+                    </div>
+                    <h3 class="item-title">Telegram Scraper Pro</h3>
+                    <p class="item-desc">Educational tool for scraping members from any Telegram group and exporting data for research.</p>
+                    <a href="/tools/telegram-scraper" class="item-link">Get Tool <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Tool</span>
+                        <span class="item-date">3 days ago</span>
+                    </div>
+                    <h3 class="item-title">Telegram Auto Responder</h3>
+                    <p class="item-desc">Educational testing tool for automatically responding to messages in Telegram with custom triggers.</p>
+                    <a href="/tools/telegram-auto-responder" class="item-link">Get Tool <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Tool</span>
+                        <span class="item-date">5 days ago</span>
+                    </div>
+                    <h3 class="item-title">Telegram Bulk Sender</h3>
+                    <p class="item-desc">Educational testing tool for sending messages to multiple Telegram users or groups efficiently.</p>
+                    <a href="/tools/telegram-bulk-sender" class="item-link">Get Tool <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Videos Page -->
+        <div id="videosPage" class="hidden">
+            <h1 class="hero-title mb-4">Tutorial Videos</h1>
+            <p class="hero-subtitle mb-5">Step-by-step educational guides and tutorials for various digital tools and techniques.</p>
+
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Video</span>
+                        <span class="item-date">3 days ago</span>
+                    </div>
+                    <h3 class="item-title">Android Reverse Engineering</h3>
+                    <p class="item-desc">Educational video on reverse engineering Android apps and modifying their behavior for research purposes.</p>
+                    <a href="/videos/android-reverse-engineering" class="item-link">Watch Now <i class="fas fa-play"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Video</span>
+                        <span class="item-date">1 week ago</span>
+                    </div>
+                    <h3 class="item-title">Telegram Bot Development</h3>
+                    <p class="item-desc">Complete educational guide to creating powerful Telegram bots with Python for learning purposes.</p>
+                    <a href="/videos/telegram-bot-development" class="item-link">Watch Now <i class="fas fa-play"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Video</span>
+                        <span class="item-date">2 weeks ago</span>
+                    </div>
+                    <h3 class="item-title">Web Scraping with Python</h3>
+                    <p class="item-desc">Educational tutorial on scraping data from websites using BeautifulSoup and Selenium for research.</p>
+                    <a href="/videos/web-scraping-python" class="item-link">Watch Now <i class="fas fa-play"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Video</span>
+                        <span class="item-date">5 days ago</span>
+                    </div>
+                    <h3 class="item-title">Ethical Hacking Basics</h3>
+                    <p class="item-desc">Educational introduction to ethical hacking techniques and tools for beginners.</p>
+                    <a href="/videos/ethical-hacking-basics" class="item-link">Watch Now <i class="fas fa-play"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts Page -->
+        <div id="scriptsPage" class="hidden">
+            <h1 class="hero-title mb-4">Scripts</h1>
+            <p class="hero-subtitle mb-5">Automation scripts for various platforms and educational purposes.</p>
+
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Script</span>
+                        <span class="item-date">4 days ago</span>
+                    </div>
+                    <h3 class="item-title">Instagram Auto Liker</h3>
+                    <p class="item-desc">Educational Python script to automatically like posts based on hashtags or user profiles for testing.</p>
+                    <a href="/scripts/instagram-auto-liker" class="item-link">Download <i class="fas fa-download"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Script</span>
+                        <span class="item-date">1 week ago</span>
+                    </div>
+                    <h3 class="item-title">Twitter Follower Bot</h3>
+                    <p class="item-desc">Educational script to automatically follow users based on keywords for research purposes.</p>
+                    <a href="/scripts/twitter-follower-bot" class="item-link">Download <i class="fas fa-download"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Script</span>
+                        <span class="item-date">2 days ago</span>
+                    </div>
+                    <h3 class="item-title">WhatsApp Bulk Messenger</h3>
+                    <p class="item-desc">Educational Python script to send messages to multiple WhatsApp contacts for testing.</p>
+                    <a href="/scripts/whatsapp-bulk-messenger" class="item-link">Download <i class="fas fa-download"></i></a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-badge">Script</span>
+                        <span class="item-date">3 weeks ago</span>
+                    </div>
+                    <h3 class="item-title">Reddit Upvote Bot</h3>
+                    <p class="item-desc">Educational script to automatically upvote posts on Reddit for research purposes.</p>
+                    <a href="/scripts/reddit-upvote-bot" class="item-link">Download <i class="fas fa-download"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <div class="footer-logo-icon"><i class="fas fa-skull"></i></div>
+            <div class="footer-logo-text">Maut Store</div>
+        </div>
+
+        <div class="footer-links">
+            <a href="/" class="footer-link">Home</a>
+            <a href="/mods" class="footer-link">Mod APKs</a>
+            <a href="/tools" class="footer-link">Tools</a>
+            <a href="/videos" class="footer-link">Videos</a>
+            <a href="/scripts" class="footer-link">Scripts</a>
+            <a href="/about" class="footer-link">About</a>
+            <a href="/contact" class="footer-link">Contact</a>
+        </div>
+
+        <p class="footer-disclaimer">
+            Disclaimer: All content provided on Maut Store is for educational purposes only. We do not encourage or promote any illegal activities. Users are solely responsible for how they use the provided resources.
+        </p>
+
+        <p class="footer-copyright">
+            &copy; 2025 Maut Store. All rights reserved.
+        </p>
+    </footer>
+
+    <script>
+        // Simulate loading
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+            }, 1500);
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                this.innerHTML = '<i class="fas fa-bars"></i>';
+            } else {
+                this.innerHTML = '<i class="fas fa-times"></i>';
+            }
+        });
+
+        // Simple router for demo purposes
+        function navigateTo(path) {
+            // Hide all pages
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('modsPage').classList.add('hidden');
+            document.getElementById('toolsPage').classList.add('hidden');
+            document.getElementById('videosPage').classList.add('hidden');
+            document.getElementById('scriptsPage').classList.add('hidden');
+
+            // Show the requested page
+            if (path === '/mods') {
+                document.getElementById('modsPage').classList.remove('hidden');
+                document.title = "Mod APKs | Maut Store";
+            } else if (path === '/tools') {
+                document.getElementById('toolsPage').classList.remove('hidden');
+                document.title = "Tools | Maut Store";
+            } else if (path === '/videos') {
+                document.getElementById('videosPage').classList.remove('hidden');
+                document.title = "Videos | Maut Store";
+            } else if (path === '/scripts') {
+                document.getElementById('scriptsPage').classList.remove('hidden');
+                document.title = "Scripts | Maut Store";
+            } else {
+                document.getElementById('homePage').classList.remove('hidden');
+                document.title = "Maut Store | Premium Digital Resources";
+            }
+
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
+            }
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Handle back/forward navigation
+        window.addEventListener('popstate', function(event) {
+            navigateTo(window.location.pathname);
+        });
+
+        // Search functionality
+        document.querySelector('.search-icon').addEventListener('click', function() {
+            const query = document.querySelector('.search-bar').value.trim();
+            if (query) {
+                alert(`Search functionality would search for: ${query}`);
+                // In a real implementation, this would filter or redirect to search results
+            }
+        });
+
+        // Allow pressing Enter in search bar
+        document.querySelector('.search-bar').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.search-icon').click();
+            }
+        });
+
+        // Initialize page based on URL
+        function initPage() {
+            const path = window.location.pathname;
+            navigateTo(path);
+        }
+
+        // Initialize
+        initPage();
+    </script>
+</body>
+</html>

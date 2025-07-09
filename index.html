@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maut Store - Tool Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0f0f0f;
+      color: #ffffff;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 0;
+      animation: fadeIn 1.5s ease;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #00ffc3;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      animation: fadeInUp 1s ease;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 10px #00ffc3a0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #00ffc3;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #00ffc3;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #000;
+      background: #00ffc3;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .card a:hover {
+      background: #00e6b0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>⚡ Maut Store</h1>
+    <p>Your ultimate hub for tools, mods, and more</p>
+  </header>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Mod APK - WhatsApp</h2>
+      <p>Unlocked features, anti-ban, and more. Updated daily.</p>
+      <a href="https://mautstore.netlify.app/whatsapp">Download</a>
+    </div>
+    <div class="card">
+      <h2>Telegram Tool - Auto DM</h2>
+      <p>Send automated messages in bulk with full speed control.</p>
+      <a href="https://mautstore.netlify.app/autodm">Use Tool</a>
+    </div>
+    <div class="card">
+      <h2>Premium VPN Configs</h2>
+      <p>Get access to working .hc, .ehi, and .ovpn files.</p>
+      <a href="https://mautstore.netlify.app/vpn">Get Files</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Maut Store. Powered by Netlify & Telegram.
+  </footer>
+
+</body>
+  </html>
